@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by LunaFlores on 1/10/17.
@@ -12,8 +14,11 @@ public class Entry {
 
     private Day day;
     private String note;
+    private int duration;
 
     public Entry (Day day, String note) {
+        Random random = new Random();
+        this.duration =random.nextInt(100);
         this.day = day;
         this.note = note;
     }
@@ -34,11 +39,20 @@ public class Entry {
         this.note = note;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
         return "Entry{" +
                 "day=" + day +
                 ", note='" + note + '\'' +
+                ", duration=" + duration +
                 '}';
     }
 
@@ -47,6 +61,7 @@ public class Entry {
 
         Entry entry = new Entry(Day.MONDAY, "I hate mondays");
         entries.add(entry);
+
 
         entry = new Entry(Day.TUESDAY, "Taco Tuesday");
         entries.add(entry);
@@ -83,4 +98,5 @@ public class Entry {
 
         return entries;
     }
+
 }
